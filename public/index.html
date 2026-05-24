@@ -9,7 +9,7 @@
   <body>
     <main class="app-shell">
       <section class="planner-panel" aria-label="Planner input">
-        <div class="panel-header">
+        <div class="brand-bar">
           <div>
             <p class="eyebrow">Trip planner</p>
             <h1>FairTrip Planner</h1>
@@ -18,7 +18,7 @@
         </div>
 
         <form id="tripForm">
-          <div class="form-grid compact">
+          <section class="trip-basics">
             <label>
               Days
               <input id="daysInput" type="number" min="1" max="7" value="2" />
@@ -27,27 +27,44 @@
               Hours per day
               <input id="hoursInput" type="number" min="1" max="24" value="8" />
             </label>
+          </section>
+
+          <div id="inputOverview" class="input-overview"></div>
+
+          <div class="section-tabs" aria-label="Input sections">
+            <a href="#travellersSection">Travellers</a>
+            <a href="#activitiesSection">Activities</a>
+            <a href="#eventsSection">Events</a>
           </div>
 
-          <section class="input-section">
+          <section id="travellersSection" class="input-section">
             <div class="section-heading">
-              <h2>Travellers</h2>
+              <div>
+                <span class="step-label">Step 1</span>
+                <h2>Travellers</h2>
+              </div>
               <button id="addTravellerButton" class="secondary-button" type="button">Add traveller</button>
             </div>
             <div id="travellersList" class="item-list"></div>
           </section>
 
-          <section class="input-section">
+          <section id="activitiesSection" class="input-section">
             <div class="section-heading">
-              <h2>Activities</h2>
+              <div>
+                <span class="step-label">Step 2</span>
+                <h2>Activities</h2>
+              </div>
               <button id="addActivityButton" class="secondary-button" type="button">Add activity</button>
             </div>
             <div id="activitiesList" class="item-list"></div>
           </section>
 
-          <section class="input-section">
+          <section id="eventsSection" class="input-section">
             <div class="section-heading">
-              <h2>Events</h2>
+              <div>
+                <span class="step-label">Step 3</span>
+                <h2>Events</h2>
+              </div>
               <button id="addEventButton" class="secondary-button" type="button">Add event</button>
             </div>
             <div id="eventsList" class="item-list"></div>
@@ -58,7 +75,7 @@
       </section>
 
       <section class="results-panel" aria-label="Planner output">
-        <div class="panel-header">
+        <div class="results-header">
           <div>
             <p class="eyebrow">Trip result</p>
             <h2>Recommended Itinerary</h2>
@@ -66,6 +83,7 @@
           <span id="statusBadge" class="status-badge">Ready</span>
         </div>
 
+        <div id="resultOverview" class="result-overview"></div>
         <div id="planSummary" class="report-stack"></div>
       </section>
     </main>

@@ -9,7 +9,7 @@ It uses:
 - Shared planner engine in plain JavaScript
 - Node's built-in test runner
 - Friendly form-based input for travellers, activities, and trip events
-- Detailed itinerary cards with activity names, costs, time, energy, satisfaction, and plain-English reasoning
+- Colorful dashboard UI with trip summary cards, traveller budget cards, group-preferred activities, category pills, detailed itinerary cards, and plain-English reasoning
 
 No external packages are required.
 
@@ -37,7 +37,7 @@ Open:
 http://localhost:3000
 ```
 
-The UI lets users add travellers, activities, and events without writing JSON, then shows a detailed itinerary with plain-English reasoning.
+The UI lets users add travellers, activities, and events without writing JSON. Traveller card headings update while names and budgets are edited, and the output shows group preferences before the recommended itinerary.
 
 ## Test
 

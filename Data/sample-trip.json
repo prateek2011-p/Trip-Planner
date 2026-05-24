@@ -1,0 +1,65 @@
+{
+  "days": 2,
+  "hoursPerDay": 8,
+  "travellers": [
+    {
+      "name": "Alice",
+      "dailyBudget": 100,
+      "energy": 80,
+      "interests": ["ADVENTURE", "FOOD"]
+    },
+    {
+      "name": "Bob",
+      "dailyBudget": 80,
+      "energy": 60,
+      "interests": ["CULTURE", "FOOD"]
+    },
+    {
+      "name": "Cara",
+      "dailyBudget": 120,
+      "energy": 70,
+      "interests": ["NATURE", "FOOD"]
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "name": "Museum",
+      "cost": 30,
+      "duration": 3,
+      "energy": 20,
+      "tag": "CULTURE"
+    },
+    {
+      "id": 2,
+      "name": "Hike",
+      "cost": 40,
+      "duration": 5,
+      "energy": 50,
+      "tag": "ADVENTURE"
+    },
+    {
+      "id": 3,
+      "name": "Cafe",
+      "cost": 20,
+      "duration": 2,
+      "energy": 10,
+      "tag": "FOOD"
+    },
+    {
+      "id": 4,
+      "name": "Park",
+      "cost": 25,
+      "duration": 3,
+      "energy": 15,
+      "tag": "NATURE"
+    }
+  ],
+  "events": [
+    {
+      "type": "WEATHER",
+      "day": 2,
+      "tag": "ADVENTURE"
+    }
+  ]
+}

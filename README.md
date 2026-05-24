@@ -105,3 +105,4 @@ Resume line:
 ```text
 Built a full-stack JavaScript trip-planning app with a deterministic optimization engine, event-driven replanning, a Node.js API, and an interactive HTML/CSS/JS frontend.
 ```
+live demo link : https://trip-planner-two-theta.vercel.app/

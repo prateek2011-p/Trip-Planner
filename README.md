@@ -250,13 +250,6 @@ New scheduling strategies and recommendation rules can be added without affectin
 
 ---
 
-## Resume Description
-
-**FairTrip Web Planner | Node.js, JavaScript, HTML, CSS**
-
-Developed a full-stack trip planning platform that automatically generates fair and deterministic group itineraries based on traveller preferences, budgets, activities, and scheduled events. Designed a reusable planning engine, REST APIs, interactive dashboard, and automated test suite while maintaining a zero-dependency architecture.
-
----
 
 ## Closing
 

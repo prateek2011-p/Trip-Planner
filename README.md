@@ -1,108 +1,275 @@
 # FairTrip Web Planner
 
-FairTrip Web Planner is a full-stack JavaScript version of the deterministic group-trip planner.
+## Problem We Solved
 
-It uses:
+Planning a group trip can be surprisingly difficult because every traveller has different:
 
-- Node.js backend with built-in `http`
-- HTML, CSS, and browser JavaScript frontend
-- Shared planner engine in plain JavaScript
-- Node's built-in test runner
-- Friendly form-based input for travellers, activities, and trip events
-- Colorful dashboard UI with trip summary cards, traveller budget cards, group-preferred activities, category pills, detailed itinerary cards, and plain-English reasoning
+* Budgets
+* Interests
+* Activity preferences
+* Time constraints
 
-No external packages are required.
+When multiple people are involved, deciding what to do often becomes a manual and time-consuming process. Popular activities may exceed some travellers' budgets, while budget-friendly options may not align with everyone's interests.
 
-## Run
+Our project solves this problem by automatically generating a fair and balanced trip itinerary that considers the preferences and constraints of the entire group.
 
-```bash
-npm start
-```
+---
 
-On Windows PowerShell, if `npm` is blocked by script policy, use either:
+## How It Works
 
-```powershell
-npm.cmd start
-```
+The user enters trip details through a simple web interface.
 
-or:
+This includes:
 
-```powershell
-node server.js
-```
+* Number of trip days
+* Available hours per day
+* Traveller information
+* Individual budgets
+* Activity options
+* Scheduled events
 
-Open:
+After clicking **Generate Plan**, the system processes the information through a deterministic planning engine.
 
-```text
-http://localhost:3000
-```
+### 1. Traveller Analysis Stage
 
-The UI lets users add travellers, activities, and events without writing JSON. Traveller card headings update while names and budgets are edited, and the output shows group preferences before the recommended itinerary.
+The system analyzes all travellers and their preferences.
 
-## Test
+For each traveller, it considers:
 
-```bash
-npm test
-```
+* Budget limits
+* Preferred activities
+* Available trip duration
 
-On Windows PowerShell:
+This helps establish the overall interests and constraints of the group.
 
-```powershell
-npm.cmd test
-```
+### 2. Activity Evaluation Stage
 
-or:
+The planner evaluates all available activities.
 
-```powershell
-node --test tests\*.test.js
-```
+Each activity is analyzed based on:
 
-## API
+* Cost
+* Duration
+* Category
+* Popularity among travellers
+* Compatibility with group preferences
 
-Health:
+Activities that satisfy more travellers while respecting budget constraints receive higher priority.
 
-```text
-GET /api/health
-```
+### 3. Fairness & Scheduling Stage
 
-Sample data:
+The planner generates a balanced itinerary using deterministic decision-making.
 
-```text
-GET /api/sample
-```
+The scheduling engine:
 
-Generate plan:
+* Allocates activities across available days
+* Respects trip time limits
+* Prevents scheduling conflicts
+* Incorporates fixed events
+* Maximizes group satisfaction
+* Applies deterministic tie-breaking to ensure consistent results
 
-```text
-POST /api/plan
-Content-Type: application/json
-```
+This ensures that identical inputs always produce identical trip plans.
 
-Request body shape:
+### 4. Explanation Stage
 
-```json
-{
-  "days": 2,
-  "hoursPerDay": 8,
-  "travellers": [],
-  "activities": [],
-  "events": []
-}
-```
+The system generates plain-English reasoning explaining why activities were selected.
 
-## Why This Is Good For An SDE Project
+Users can understand:
 
-This project shows both product and engineering skills:
+* Which preferences influenced decisions
+* Why certain activities were prioritized
+* How the final itinerary was constructed
 
-- Algorithm design with deterministic tie-breaking
-- Backend API design
-- Frontend form design and itinerary visualization
-- Test coverage for planner behavior
-- Clean separation between domain logic and HTTP/UI code
+---
 
-Resume line:
+## Output Format
 
-```text
-Built a full-stack JavaScript trip-planning app with a deterministic optimization engine, event-driven replanning, a Node.js API, and an interactive HTML/CSS/JS frontend.
-```
-live demo link : https://trip-planner-two-theta.vercel.app/
+Instead of returning raw JSON, FairTrip Web Planner presents results through an interactive dashboard.
+
+The dashboard displays:
+
+* Trip summary
+* Recommended itinerary
+* Traveller budget cards
+* Group preference insights
+* Activity categories
+* Scheduled events
+* Plain-English planning explanations
+
+This makes the generated plan easy to understand and share.
+
+---
+
+## Key Features
+
+### Intelligent Trip Planning
+
+Generates optimized multi-day itineraries based on traveller preferences and constraints.
+
+### Budget-Aware Recommendations
+
+Ensures suggested activities remain within traveller budget limits.
+
+### Fair Group Decision Making
+
+Balances the interests of all travellers rather than favoring a single person.
+
+### Event-Aware Scheduling
+
+Automatically incorporates fixed events into the itinerary.
+
+### Deterministic Planning Engine
+
+Produces identical results for identical inputs through deterministic tie-breaking.
+
+### Interactive Dashboard
+
+Provides a visual overview of trip recommendations and traveller information.
+
+### Plain-English Reasoning
+
+Explains how and why planning decisions were made.
+
+### Shared Planning Engine
+
+Uses a reusable planning engine across both frontend and backend components.
+
+### API-Driven Architecture
+
+Supports programmatic plan generation through REST endpoints.
+
+### Automated Testing
+
+Validates planner behavior using Node.js's built-in test framework.
+
+---
+
+## Tech Stack
+
+### Backend
+
+* Node.js
+* Native HTTP Server
+* REST APIs
+
+### Frontend
+
+* HTML
+* CSS
+* Vanilla JavaScript
+
+### Testing
+
+* Node.js Built-in Test Runner
+
+### Architecture
+
+* Shared JavaScript Planning Engine
+* Modular Business Logic
+* Deterministic Scheduling Algorithms
+
+---
+
+## User Experience
+
+The application provides a simple form-based interface where users can:
+
+* Add travellers
+* Define budgets
+* Create activities
+* Schedule events
+* Generate itineraries instantly
+
+Traveller cards update dynamically while editing, and the generated plan is displayed in a visually organized dashboard.
+
+---
+
+## Why This Matters
+
+FairTrip Web Planner bridges the gap between:
+
+**Manual Group Planning → Automated Fair Trip Recommendations**
+
+Instead of spending hours comparing options and negotiating schedules, groups can generate a balanced itinerary in seconds.
+
+The platform can be useful for:
+
+* Friend groups
+* Family vacations
+* College trips
+* Team outings
+* Travel agencies
+* Event coordinators
+
+---
+
+## Engineering Highlights
+
+### Deterministic Recommendation Engine
+
+Ensures repeatable and testable outputs.
+
+### Fairness-Oriented Planning
+
+Balances group preferences while respecting constraints.
+
+### Clean Separation of Concerns
+
+Organized into:
+
+* UI Layer
+* HTTP/API Layer
+* Planning Engine
+* Testing Layer
+
+### Zero External Dependencies
+
+Built entirely using native Node.js and browser technologies.
+
+### Testable Business Logic
+
+Core planning functionality remains independent from presentation and networking layers.
+
+### Extensible Architecture
+
+New scheduling strategies and recommendation rules can be added without affecting the UI.
+
+---
+
+## Future Improvements
+
+* User authentication
+* Database integration
+* Trip sharing and collaboration
+* PDF itinerary export
+* Map integration
+* Weather-aware recommendations
+* Cost optimization suggestions
+* Mobile application support
+
+---
+
+## Resume Description
+
+**FairTrip Web Planner | Node.js, JavaScript, HTML, CSS**
+
+Developed a full-stack trip planning platform that automatically generates fair and deterministic group itineraries based on traveller preferences, budgets, activities, and scheduled events. Designed a reusable planning engine, REST APIs, interactive dashboard, and automated test suite while maintaining a zero-dependency architecture.
+
+---
+
+## Closing
+
+In summary, FairTrip Web Planner transforms complex group travel planning into an automated and transparent process. By combining traveller preferences, budget awareness, event scheduling, and deterministic recommendation logic, the platform generates balanced itineraries that are easy to understand, reproducible, and fair for the entire group.
+
+---
+
+## Demo Video
+
+🎥 Watch the project demonstration here:
+
+**Demo:** [Add Your Video Link Here]
+## Live link:
+https://trip-planner-two-theta.vercel.app/
+
+
